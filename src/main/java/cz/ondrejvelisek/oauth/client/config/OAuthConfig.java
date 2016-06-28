@@ -18,10 +18,10 @@ import java.util.Arrays;
 @EnableOAuth2Client
 public class OAuthConfig {
 
-    private final String AUTHORIZATION_ENDPOINT = "https://perun-dev.meta.zcu.cz/krb/oauth2/authorize";
-    private final String TOKEN_ENDPOINT = "https://perun-dev.meta.zcu.cz/oauth2/token";
-    private final String CLIENT_ID = "beacon-test-service2";
-    private final String CLIENT_SECRET = "2af12d71-ede7-4944-998b-8e83125c2eef";
+    private final String AUTHORIZATION_ENDPOINT = "https://perun.elixir-czech.cz/fed/oauth2/authorize";
+    private final String TOKEN_ENDPOINT = "https://perun.elixir-czech.cz/oauth2/token";
+    private final String CLIENT_ID = "beacon-test-service";
+    private final String CLIENT_SECRET = "1ab7af5d-ee73-45de-9d82-9e2eb48a6815";
 
     @Bean
     public RestOperations elixirAAI(OAuth2ClientContext oauth2ClientContext) {

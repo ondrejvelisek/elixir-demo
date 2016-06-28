@@ -15,7 +15,7 @@ import java.util.Map;
 @Controller
 public class MainController {
 
-    private final String USERINFO_ENDPOINT = "https://perun-dev.meta.zcu.cz/oauth/rpc-xvelisek/json/oidcManager/userinfo";
+    private final String USERINFO_ENDPOINT = "https://perun.elixir-czech.cz/oauth/rpc/json/oidcManager/userinfo";
 
     @Resource
     private RestOperations elixirAAI;
