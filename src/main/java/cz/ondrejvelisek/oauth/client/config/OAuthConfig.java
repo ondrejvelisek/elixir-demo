@@ -18,10 +18,11 @@ import java.util.Arrays;
 @EnableOAuth2Client
 public class OAuthConfig {
 
-    private final String AUTHORIZATION_ENDPOINT = "https://perun.elixir-czech.cz/fed/oauth2/authorize";
-    private final String TOKEN_ENDPOINT = "https://perun.elixir-czech.cz/oauth2/token";
-    private final String CLIENT_ID = "beacon-test-service";
-    private final String CLIENT_SECRET = "1ab7af5d-ee73-45de-9d82-9e2eb48a6815";
+    private final String AUTHORIZATION_ENDPOINT = "https://perun.elixir-czech.cz/oidc/authorize";
+    private final String TOKEN_ENDPOINT = "https://perun.elixir-czech.cz/oidc/token";
+    private final String CLIENT_ID = "client";
+    private final String CLIENT_SECRET = "secret";
+    private final String[] SCOPES = {"openid","profile","email","phone","bona_fide_status"};
 
     @Bean
     public RestOperations elixirAAI(OAuth2ClientContext oauth2ClientContext) {
@@ -30,9 +31,7 @@ public class OAuthConfig {
         resource.setAccessTokenUri(TOKEN_ENDPOINT);
         resource.setClientId(CLIENT_ID);
         resource.setClientSecret(CLIENT_SECRET);
-        /* Should be regular List of Strings but current Authorization server expects comma as a divider in param
-        instead of proper space which Spring security for OAuth use */
-        resource.setScope(Arrays.asList("sub,name,email,bona_fide_status"));
+        resource.setScope(Arrays.asList(SCOPES));
         return new OAuth2RestTemplate(resource, oauth2ClientContext);
     }
 }
